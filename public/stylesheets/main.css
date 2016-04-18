@@ -1,0 +1,113 @@
+.fumblr {
+  text-align: center;
+}
+body {
+  background-color: cornflowerblue;
+  opacity: 1;
+}
+.mian_header {
+
+}
+.left_header {
+  text-align: left;
+}
+.right_header {
+  text-align: right;
+  font-size: 0.7em;
+}
+.logo, .fumblr,#newBlogBtn, #loginBtn, #register{
+  vertical-align: middle;
+  display: inline-block;
+}
+.logo {
+  background:url("http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/matte-blue-and-white-square-icons-social-media-logos/117968-matte-blue-and-white-square-icon-social-media-logos-blogger.png") center center;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+}
+.fumblr {
+  margin:0 auto;
+  color: white ;
+  font-size: bold;
+}
+#newBlogBtn {
+  text-decoration: none;
+  color: lightgrey;
+  margin-right: 20px;
+}
+#loginBtn {
+  text-decoration: none;
+  color: white;
+  margin-right: 5px;
+}
+#register {
+  text-decoration: none;
+  color: white;
+  margin-left: 5px;
+}
+.navigator {
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+}
+.navigator ul {
+  list-style: none;
+  font-size: 0.8em;
+}
+.navigator li {
+  display: inline-block;
+  text-decoration: none;
+  margin:5px;
+}
+.navigator a {
+  text-decoration: none;
+  color: white;
+}
+.navigator a:hover{
+  color:skyblue;
+}
+.main_body {
+  margin:10px;
+  border:1px solid lightskyblue;
+}
+.post_container {
+  display: inline-block;
+  width: 65%;
+  vertical-align: top;
+}
+.right_container {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin-left: 20px;
+}
+.blog {
+  margin: 10px auto;
+}
+.blog textarea {
+  line-height: 3em;
+  font-size: 13px; 
+  border: none;  
+  padding: 10px;
+  background-color: AliceBlue;
+}
+.blog button {
+  display: block;
+  margin-top: 5px;
+}
+.add_file {
+  margin-top: 10px;
+}
+.add_file img,textarea {
+  display: inline-block;
+  vertical-align: top;
+}
+.add_file img {
+  width: 8%;
+  height: 8%;
+}
+.blog_title button,textarea{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+

@@ -1,0 +1,16 @@
+body {
+  background-color: cornflowerblue;
+  opacity: 1;
+  text-align: center;
+}
+.user_form {
+  display: inline-block;
+}
+.user_form input {
+  display: block;
+  width: 0 auto;
+}
+.user_form button {
+  margin-top: 10px;
+  border-radius: 2px;
+}

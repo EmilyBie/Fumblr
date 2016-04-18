@@ -11,16 +11,15 @@ CREATE TABLE posts (
   user_id INTEGER,
   title VARCHAR(100),
   body TEXT,
-  post_time VARCHAR(100),
+  post_time DATETIME,
   reading_time INTEGER,
   likes INTEGER,
   image_url VARCHAR(200)
 );
-
-
 
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
   body VARCHAR(1000),
   post_id INTEGER
 );
+

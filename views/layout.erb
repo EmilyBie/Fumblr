@@ -6,6 +6,25 @@
   <link rel='stylesheet' href='/stylesheets/main.css'>
 </head>
 <body>
+  <header class="mian_header">
+    <div class="right_header">
+      <a id="newBlogBtn" href="/posts/new">Write a blog</a>
+      <a id="loginBtn" href="/login">Login</a>|
+      <a id="register" href="/register">Register</a>
+    </div>
+    <div class="left_header">
+      <div class="logo"></div>
+      <h1 class="fumblr">Fumblr Blog</h1>
+    </div>
+  </header>
+  <div class="navigator">
+    <ul>
+      <li><a href="/">For you</a></li>
+      <li><a href="/posts/topstories">Top Stories</a></li>
+      <li><a href="/posts/longreads">Longreads</a></li>
+      <li><a href="/about">About Fumblr</a></li>
+    </ul>
+  </div>
 
   <%= yield %>
 

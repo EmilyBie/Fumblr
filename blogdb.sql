@@ -17,6 +17,11 @@ CREATE TABLE posts (
   image_url VARCHAR(200)
 );
 
+ALTER TABLE posts DROP COLUMN post_time;
+ALTER TABLE posts ADD COLUMN post_time timestamp without time zone;
+ALTER TABLE posts DROP COLUMN likes;
+ALTER TABLE posts ADD COLUMN liked_by INTEGER[];
+
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
   body VARCHAR(1000),

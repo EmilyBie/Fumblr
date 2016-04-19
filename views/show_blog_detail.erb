@@ -1,0 +1,34 @@
+<div class="post_detail">
+  <div class="post_detail_container">
+    <div>
+      <div class="postcreater_photo">
+        <img src="http://playseeds.com/img/the_user_500px.png" alt="">
+      </div>
+      <p class="postcreater_name"><%= current_user.email %></p>
+    </div>
+    <div>
+      <div class="create_time"><%= @post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
+      <div class="reading_time"><%= @post.reading_time%> min read</div>
+    </div>
+  <h1><%=@post.title%></h1>
+  <% paragraphs = @post.body.split("\r")%>
+  <% paragraphs.each do |paragraph| %>
+    <p><%= paragraph %></p>
+  <% end %>
+</div>
+
+<div class="comments">
+  <h3>Comments</h3>
+  <% if @comments != nil %>
+    <% @comments.each do |comment| %>
+    <div><%= comment.body%></div>
+    <% end %>
+  <% end %>
+  <form class="comment_form" action="/comment/?post_id=<%=@post.id%>" method="post">
+     <textarea name="body" id="" cols="50" rows="10" placeholder="Your comment..."></textarea>
+     <div>
+       <button>Publish</button>
+     </div>
+  </form>
+
+</div>

@@ -9,8 +9,13 @@
   <header class="mian_header">
     <div class="right_header">
       <a id="newBlogBtn" href="/posts/new">Write a blog</a>
-      <a id="loginBtn" href="/login">Login</a>|
-      <a id="register" href="/register">Register</a>
+      <% if logged_in? %>
+        <p id="user_email"><%= current_user.email %></p>
+        <a id="logoutBtn" href="/logout">Logout</a>
+        <% else %>
+        <a id="loginBtn" href="/login">Login</a>|
+        <a id="register" href="/register">Register</a>
+      <%end%>   
     </div>
     <div class="left_header">
       <div class="logo"></div>
@@ -27,5 +32,5 @@
   </div>
 
   <%= yield %>
-
+<script type="text/javascript" src="/javascripts/application.js"></script>
 </body>

@@ -21,10 +21,16 @@ ALTER TABLE posts DROP COLUMN post_time;
 ALTER TABLE posts ADD COLUMN post_time timestamp without time zone;
 ALTER TABLE posts DROP COLUMN likes;
 ALTER TABLE posts ADD COLUMN liked_by INTEGER[];
+ALTER TABLE posts ADD COLUMN post_type_id INTEGER;
 
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
   body VARCHAR(1000),
   post_id INTEGER
+);
+
+CREATE TABLE post_types (
+  id SERIAL4 PRIMARY KEY,
+  type_name VARCHAR(100) NOT NULL
 );
 

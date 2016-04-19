@@ -1,10 +1,17 @@
 <form class="blog" action="/posts/new" method="post">
   <div class="blog_title">
-    <button>Publish</button>
     <textarea name="title" id="title" cols="80" rows="1" placeholder="Title"></textarea>
+    <div class="choose_type_and_publish">
+      <select name="post_types" id="">
+        <% @post_types.each do |post_type| %>
+          <option value="<%= post_type.id%>"><%= post_type.type_name%></option>
+        <% end %>
+      </select>
+      <button>Publish</button>
+    </div>
   </div>
   <div class="add_file">
+    <textarea name="body" id="body" cols="80" rows="10" placeholder="Write your blog"></textarea>
     <a href="/posts/addfile"><img src="https://cdn2.iconfinder.com/data/icons/55-files-and-documents/512/Icon_6-512.png" alt=""></a>
-    <textarea name="body" id="body" cols="80" rows="20" placeholder="Write your blog"></textarea>
   </div>
 </form>

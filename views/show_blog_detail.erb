@@ -4,7 +4,7 @@
       <div class="postcreater_photo">
         <img src="http://playseeds.com/img/the_user_500px.png" alt="">
       </div>
-      <p class="postcreater_name"><%= current_user.email %></p>
+      <p class="postcreater_name"><%= @post.user.email %></p>
     </div>
     <div>
       <div class="create_time"><%= @post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>

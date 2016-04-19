@@ -6,7 +6,7 @@
           <div class="postcreater_photo">
             <img src="http://playseeds.com/img/the_user_500px.png" alt="">
           </div>
-          <p class="postcreater_name"><%= current_user.email %></p>
+          <p class="postcreater_name"><%= post.user.email %></p>
         </div>
         <div>
           <div class="create_time"><%= post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
@@ -14,16 +14,22 @@
         </div>
         <div>
           <h3><a href="/posts/show?id=<%=post.id%>"><%= post.title %></a></h3>
-          <p class="body_head"><a href="/posts/show?id=<%=post.id%>"><%= post.body.gsub(/^(.{200,}?).*$/m,'\1...') %></a></p>
+          <p class="body_head"><a href="/posts/show?id=<%=post.id%>"><% if post.body != nil %>
+            <%= post.body.gsub(/^(.{200,}?).*$/m,'\1...')%>
+          <% end %></a></p>
           <a class="readmore" href="/posts/show?id=<%=post.id%>">Read more...</a>
         </div>
         <div class="post_detail_foot">
           <a href="/posts/like?post_id=<%= post.id%>">
+          <% if logged_in? %>
             <% if post.liked_by == nil || post.liked_by.include?(current_user.id) == false %>
               <div class="not_like"></div>
             <% else %>
               <div class="is_like"></div>
             <% end %>
+          <% else %>
+            <div class="not_like"></div>
+          <% end %>         
           </a>
           <% if post.liked_by != nil %>
           <div class="total_likes"><%= post.liked_by.size %></div>
@@ -37,16 +43,6 @@
   <div class="side_container">
     <div class="top_posts">
       <h3>Top Posts</h3>
-      <ul>
-        <li><a href="">Tech</a></li>
-        <li><a href="">Humour</a></li>
-        <li><a href="">Movie</a></li>
-        <li><a href="">Travel</a></li>
-        <li><a href="">Food</a></li>
-      </ul>
-    </div>
-    <div class="longreads"> 
-     <h3>Longreads</h3>
       <ul>
         <li><a href="">Tech</a></li>
         <li><a href="">Humour</a></li>

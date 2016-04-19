@@ -58,18 +58,21 @@ body {
 .navigator ul {
   list-style: none;
   font-size: 0.8em;
+  margin:0px;
 }
 .navigator li {
   display: inline-block;
   text-decoration: none;
-  margin:5px;
+  margin:0 5px;
+  padding:10px;
+
 }
 .navigator a {
   text-decoration: none;
   color: white;
 }
-.navigator a:hover{
-  color:skyblue;
+.navigator li:hover{
+  background-color: royalblue;
 }
 .main_body {
   margin:10px;
@@ -111,14 +114,14 @@ body {
   width: 8%;
   height: 8%;
 }
-.blog_title button,textarea{
+.blog_title textarea,.choose_type_and_publish{
   display: inline-block;
   vertical-align: middle;
 }
 .post {
   margin:10px;
   padding:20px;
-  background-color: white;
+  background-color: aliceblue;
 }
 .post_detail_container {
   margin:10px;
@@ -199,6 +202,12 @@ body {
 .comment_form textarea {
   padding: 10px;
 }
-
+.about_fumblr h2 {
+  text-align: center;
+}
+.about_fumblr{
+  margin:20px 30px;
+  padding:15px;
+}
 
 

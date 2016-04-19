@@ -5,6 +5,7 @@ require './db_config'
 require './models/user'
 require './models/post'
 require './models/comment'
+require './models/post_type'
 
 enable :sessions
 
@@ -23,6 +24,12 @@ after do
 end
 
 get '/' do
+  @posts = Post.all
+  # raise @posts.inspect
+  erb :index
+end
+
+get '/posts/myblog' do
   if !logged_in?
     @posts = []
   else
@@ -65,6 +72,8 @@ get '/logout' do
 end
 
 get '/posts/new' do
+  @post_types = PostType.all
+  # raise @post_types.inspect
   erb :blog_new
 end
 
@@ -79,7 +88,12 @@ post '/posts/new' do
     post.reading_time = 1
   end
   post.post_time = Time.now
-  post.save
+  post.post_type_id = params[:post_types]
+  if post.valid?
+    post.save
+  else
+    redirect to '/posts/new'
+  end
   redirect to '/'
 end
 
@@ -94,7 +108,12 @@ get '/about' do
 end
 
 post '/comment/' do
-  Comment.create(post_id: params[:post_id],body:params[:body])
+  comment = Comment.new
+  comment.post_id = params[:post_id]
+  comment.body = params[:body]
+  if comment.valid? == true
+      comment.save
+  end
   redirect to "/posts/show?id=#{params[:post_id]}"
 end
 

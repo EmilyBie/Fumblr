@@ -29,9 +29,5 @@ end
 
 class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
+  storage :fog
 end
-
-class Post < ActiveRecord::Base
-  mount_uploader :picture, ImageUploader
-end
-binding.pry

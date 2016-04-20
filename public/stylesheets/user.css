@@ -1,16 +1,92 @@
 body {
   background-color: cornflowerblue;
   opacity: 1;
+}
+h1 {
+  text-align: left;
+  color: white;
+}
+h2 {
   text-align: center;
+  color: white;
 }
 .user_form {
-  display: inline-block;
+  text-align: center;
 }
 .user_form input {
   display: block;
-  width: 0 auto;
+  border-radius: 2px;
+  margin:10px auto;
+  height: 20px;
+  width: 150px;
 }
 .user_form button {
-  margin-top: 10px;
   border-radius: 2px;
+  width: 158px;
+  height: 25px;
+  background-color: royalblue;
+  border:none;
+  color: white;
 }
+
+h4 {
+  margin:10px;
+  padding:0px 20px;
+  color:aliceblue;
+}
+
+ul#menu {
+  padding: 20px;
+  margin:10px;
+}
+
+ul#menu li {
+  display: inline-block;
+  height: 25px;
+  margin:10px;
+  position:relative;
+  border-radius: 4px 4px 4px 4px;
+}
+
+ul#menu li a {
+  color: white;
+  padding: 0px 20px;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+ul#menu li:hover {
+  background-color: orange;
+}
+.tag_not_clicked {
+  background-color: royalblue;
+}
+.tag_clicked {
+  background-color: black;
+}
+.plus {
+  background:url("https://pixabay.com/static/uploads/photo/2014/03/25/17/00/plus-297823_960_720.png");
+  background-size: cover;
+  position: absolute;
+  right:0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+}
+.check {
+  background:url("http://vector.me/files/images/3/2/329308/ok_icon") top right;
+  background-size: cover;
+  position: absolute;
+  right:0;
+  top: 0;
+  width: 10px;
+  height: 10px;
+}
+.back_to_home{
+  color: lightgrey;
+  margin:0px 30px;
+  font-size: 0.8em;
+}
+
+

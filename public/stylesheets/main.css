@@ -209,5 +209,14 @@ body {
   margin:20px 30px;
   padding:15px;
 }
+.top_posts ul {
+  padding:0px;
+  list-style-type: square;
+}
+.top_posts li a {
+  text-decoration: none;
+  color: white;
+  font-size: 0.6em;
+}
 
 

@@ -18,17 +18,21 @@
 </div>
 
 <div class="comments">
-  <h3>Comments</h3>
-  <% if @comments != nil %>
+  <% if @comments != nil && @comments != [] %>
+    <h3>Comments</h3>
     <% @comments.each do |comment| %>
     <div><%= comment.body%></div>
     <% end %>
   <% end %>
-  <form class="comment_form" action="/comment/?post_id=<%=@post.id%>" method="post">
-     <textarea name="body" id="" cols="50" rows="10" placeholder="Your comment..."></textarea>
-     <div>
-       <button>Publish</button>
-     </div>
-  </form>
+  <% if logged_in? %>
+    <h3>Give your comments here</h3>
+    <form class="comment_form" action="/comment/?post_id=<%=@post.id%>" method="post">
+        <textarea name="body" id="" cols="50" rows="10" placeholder="Your comment..."></textarea>
+        <div>
+          <button>Publish</button>
+        </div>
+    </form>
+  <% end %>
+
 
 </div>

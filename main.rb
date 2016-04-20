@@ -6,6 +6,7 @@ require './models/user'
 require './models/post'
 require './models/comment'
 require './models/post_type'
+require './models/tag'
 
 enable :sessions
 
@@ -17,6 +18,11 @@ helpers do
   def logged_in?
     !!current_user 
   end
+
+  def all_tags
+    PostType.all?
+  end
+
 end
 
 after do
@@ -24,8 +30,14 @@ after do
 end
 
 get '/' do
+  # if !logged_in?
+  #   @posts = Post.all.take(20)
+  # else 
+  #   tags = current_user.tags
+  #   @posts = PostType.
+  # end
+  
   @posts = Post.all
-  # raise @posts.inspect
   erb :index
 end
 
@@ -49,11 +61,30 @@ post '/register' do
   end
   user.password = params[:password]
   user.save
-  redirect to '/'
+  
+  redirect to '/add_tags'
+end
+
+get '/add_tags' do 
+  @post_types = PostType.all
+  erb :add_tags, :layout => :layout_for_user
 end
 
 get '/login' do
   erb :login , :layout => :layout_for_user
+end
+
+get '/select_one_tag/:post_type_id' do
+  tag = Tag.find_by(user_id: current_user.id,post_type_id:params[:post_type_id])
+  if tag == nil
+    tag = Tag.new
+    tag.post_type_id = params[:post_type_id]
+    tag.user_id = current_user.id
+    tag.save
+  else 
+    Tag.destroy(tag.id)
+  end
+  redirect to '/add_tags' 
 end
 
 post '/login' do
@@ -73,7 +104,6 @@ end
 
 get '/posts/new' do
   @post_types = PostType.all
-  # raise @post_types.inspect
   erb :blog_new
 end
 
@@ -119,17 +149,30 @@ end
 
 get '/posts/like' do
   post = Post.find(params[:post_id])
+  if !logged_in?
+    redirect to '/login'
+  end
   if post.liked_by == nil
     post.liked_by = []
     post.liked_by.push(current_user.id)
+    post.likes = 0
+    post.likes += 1
   elsif post.liked_by.include?(current_user.id) == true
     post.liked_by.delete(current_user.id)
+    post.likes -= 1
   else  
     post.liked_by.push(current_user.id)
+    post.likes += 1
   end
   post.save
   redirect to '/'
 end
+
+get '/posts/topstories' do
+  @posts = Post.where.not(likes: nil).order("likes DESC").take(10)
+  erb :index
+end
+
 
 
 

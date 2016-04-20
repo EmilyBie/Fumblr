@@ -22,6 +22,7 @@ ALTER TABLE posts ADD COLUMN post_time timestamp without time zone;
 ALTER TABLE posts DROP COLUMN likes;
 ALTER TABLE posts ADD COLUMN liked_by INTEGER[];
 ALTER TABLE posts ADD COLUMN post_type_id INTEGER;
+ALTER TABLE posts ADD COLUMN likes INTEGER;
 
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
@@ -33,4 +34,12 @@ CREATE TABLE post_types (
   id SERIAL4 PRIMARY KEY,
   type_name VARCHAR(100) NOT NULL
 );
+
+CREATE TABLE tags (
+  id SERIAL4 PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  post_type_id INTEGER NOT NULL
+);
+
+
 

@@ -44,11 +44,11 @@
     <div class="top_posts">
       <h3>Top Posts</h3>
       <ul>
-        <li><a href="">Tech</a></li>
-        <li><a href="">Humour</a></li>
-        <li><a href="">Movie</a></li>
-        <li><a href="">Travel</a></li>
-        <li><a href="">Food</a></li>
+        <% if @posts != nil %>
+          <% @posts.each do |post| %>
+            <li><a href="/posts/show?id=<%=post.id%>"><%= post.title %></a></li>
+          <%end%>
+        <%end%>
       </ul>
     </div>
   </div>

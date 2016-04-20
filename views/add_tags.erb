@@ -1,0 +1,14 @@
+<a class="back_to_home" href="/">Home</a>
+<h4>Choose some types that you are interested in</h4>
+<ul id="menu">
+  <% if @post_types != nil && @post_types != [] %>
+    <% @post_types.each do |post_type| %>
+      <% tag = Tag.find_by(user_id: current_user.id,post_type_id:post_type.id) %>
+        <% if tag == nil%>
+          <li  class="tag_not_clicked"><a href="/select_one_tag/<%=post_type.id%>"><%= post_type.type_name %></a><div class="plus"></div></li>
+        <% else %>
+          <li  class="tag_clicked"><a href="/select_one_tag/<%=post_type.id%>"><%= post_type.type_name %></a><div class="check"></div></li>
+        <% end %>
+    <% end %>
+  <% end %>  
+</ul>

@@ -11,10 +11,12 @@ CREATE TABLE posts (
   user_id INTEGER,
   title VARCHAR(100),
   body TEXT,
-  post_time DATETIME,
+  post_time timestamp without time zone,
   reading_time INTEGER,
   likes INTEGER,
-  image_url VARCHAR(200)
+  image_url VARCHAR(200),
+  liked_by INTEGER[],
+  post_type_id INTEGER
 );
 
 ALTER TABLE posts DROP COLUMN post_time;

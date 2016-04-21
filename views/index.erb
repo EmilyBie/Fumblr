@@ -19,6 +19,7 @@
           <% end %></a></p>
           <a class="readmore" href="/posts/show?id=<%=post.id%>">Read more...</a>
         </div>
+        <img src="<%= post.image_url.url%>" alt="">
         <div class="post_detail_foot">
           <a href="/posts/like?post_id=<%= post.id%>">
           <% if logged_in? %>
@@ -44,8 +45,9 @@
     <div class="top_posts">
       <h3>Top Posts</h3>
       <ul>
-        <% if @posts != nil %>
-          <% @posts.each do |post| %>
+        <% topPosts = Post.where.not(likes: nil).order("likes DESC").take(10) %>
+        <% if topPosts != nil %>
+          <% topPosts.each do |post| %>
             <li><a href="/posts/show?id=<%=post.id%>"><%= post.title %></a></li>
           <%end%>
         <%end%>

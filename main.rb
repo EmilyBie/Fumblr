@@ -104,11 +104,17 @@ end
 
 get '/posts/new' do
   @post_types = PostType.all
+  @post = Post.new
   erb :blog_new
 end
 
 post '/posts/new' do
-  post = Post.new
+
+  if params[:id] != nil && params[:id] != ''
+    post = Post.find(params[:id])
+  else 
+    post = Post.new
+  end
   post.user_id = session[:user_id]
   post.title = params[:title]
   post.body = params[:body]
@@ -119,6 +125,7 @@ post '/posts/new' do
   end
   post.post_time = Time.now
   post.post_type_id = params[:post_types]
+  post.image_url = params[:image]
   if post.valid?
     post.save
   else
@@ -170,6 +177,23 @@ end
 
 get '/posts/topstories' do
   @posts = Post.where.not(likes: nil).order("likes DESC").take(10)
+  erb :index
+end
+
+delete '/blog/delete/:id' do
+  post = Post.find(params[:id])
+  post.destroy
+  redirect to '/posts/myblog'
+end
+
+get '/blog/edit/:id' do
+  @post = Post.find(params[:id])
+  @post_types = PostType.all
+  erb :blog_new
+end
+
+get '/search' do
+  @posts = Post.where("title like ?", "%" + params[:keyword] + "%")
   erb :index
 end
 

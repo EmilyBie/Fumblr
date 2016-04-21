@@ -1,17 +1,22 @@
-<form class="blog" action="/posts/new" method="post">
+<form class="blog" action="/posts/new?id=<%=@post.id%>" method="post">
   <div class="blog_title">
-    <textarea name="title" id="title" cols="80" rows="1" placeholder="Title"></textarea>
+    <textarea name="title" id="new_post_title" cols="80" rows="1" placeholder="Title" ><%=@post.title%></textarea>
+    <!-- <input type="text" name="title" id="title" placeholder="Title"> -->
     <div class="choose_type_and_publish">
-      <select name="post_types" id="">
+      <select name="post_types" id="post_type_selector">
         <% @post_types.each do |post_type| %>
           <option value="<%= post_type.id%>"><%= post_type.type_name%></option>
         <% end %>
       </select>
-      <button>Publish</button>
+      <button id="publishBtn">Publish</button>
     </div>
   </div>
   <div class="add_file">
-    <textarea name="body" id="body" cols="80" rows="10" placeholder="Write your blog"></textarea>
-    <a href="/posts/addfile"><img src="https://cdn2.iconfinder.com/data/icons/55-files-and-documents/512/Icon_6-512.png" alt=""></a>
-  </div>
+    <input type="file" name="image" id="the-photo-file-field">
+    <textarea name="body" id="newblog_body" cols="80" rows="10" placeholder="Write your blog"><%=@post.body%></textarea>
+    <div id="blog_body_preview" contentEditable="true"></div>
+    <!-- <div name="body" id="blog_body_preview" contentEditable="true" data-placeholder="Write your blog here...">
+    </div> -->
+  </div> 
+
 </form>

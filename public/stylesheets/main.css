@@ -106,13 +106,8 @@ body {
 .add_file {
   margin-top: 10px;
 }
-.add_file img,textarea {
-  display: inline-block;
-  vertical-align: top;
-}
-.add_file img {
-  width: 8%;
-  height: 8%;
+.add_file input {
+  margin-bottom: 10px;
 }
 .blog_title textarea,.choose_type_and_publish{
   display: inline-block;
@@ -219,4 +214,68 @@ body {
   font-size: 0.6em;
 }
 
-
+div:empty:before {
+  content:attr(data-placeholder);
+  color:gray
+}
+input#the-photo-file-field{
+  color: white;
+  margin-left: 20px;
+}
+#the-photo-file-field::-webkit-file-upload-button {
+    background-color: royalblue;
+    color: white;
+    height: 20px;
+    border:0px;
+    border-radius: 2px;
+}
+#publishBtn {
+    background-color: royalblue;
+    color: white;
+    height: 20px;
+    width: 88px;
+    border:0px;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+#post_type_selector {
+  color: white;
+  background-color: royalblue;
+  border: 0px;
+  height: 20px;
+  margin-left: 10px;
+}
+#new_post_title {
+  margin-left: 20px;
+  width: 75%;
+  background-color: aliceblue;
+  border-radius: 2px;
+}
+#newblog_body {
+  margin:15px;
+}
+.deleteBtn,.editBtn {
+    background-color: royalblue;
+    color: white;
+    height: 20px;
+    width: 88px;
+    border:0px;
+    border-radius: 2px;
+    margin-left: 10px;
+}
+.navi_list {
+  display: inline-block;
+  vertical-align: middle;
+  width:60%;
+}
+.searchBox {
+  display: inline-block;
+  vertical-align: middle;
+  width: 30%;
+}
+.searchBox button{
+  background-color: royalblue;
+  color: white;
+  border:0px;
+  border-radius: 2px;
+}

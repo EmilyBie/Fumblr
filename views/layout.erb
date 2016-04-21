@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <title>Fumblr</title>
   <link rel='stylesheet' href='/stylesheets/main.css'>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- <script src="//cdn.tinymce.com/4/tinymce.min.js"></script> -->
 </head>
 <body>
   <header class="mian_header">
     <div class="right_header">
       <a id="newBlogBtn" href="/posts/new">Write a blog</a>
       <% if logged_in? %>
-        <p id="user_email"><%= current_user.email %></p>
+        <p id="user_email"><a href="/add_tags"><%= current_user.email %></a></p>
         <a id="logoutBtn" href="/logout">Logout</a>
         <% else %>
         <a id="loginBtn" href="/login">Login</a>|
@@ -23,12 +25,16 @@
     </div>
   </header>
   <div class="navigator">
-    <ul>
+    <ul class="navi_list">
       <li><a href="/">Home</a></li>
       <li><a href="/posts/myblog">My Blog</a></li>
       <li><a href="/posts/topstories">Top Stories</a></li>
       <li><a href="/about">About Fumblr</a></li>
     </ul>
+    <form class="searchBox" action="/search">
+        <input type="search" name="keyword">
+        <button>Search</button>
+    </form>
   </div>
 
   <%= yield %>

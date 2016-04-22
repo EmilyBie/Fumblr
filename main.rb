@@ -1,12 +1,11 @@
 require 'sinatra'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require './db_config'
 require './models/user'
 require './models/post'
 require './models/comment'
 require './models/post_type'
 require './models/tag'
-require 'pry'
 
 enable :sessions
 
@@ -31,13 +30,18 @@ end
 
 get '/' do
   @posts = []
-  tags = current_user.tags
-  tags.each do |tag|
-    @posts.concat(tag.post_type.posts)
-  end
-  if @posts == []
+  if logged_in?
+    tags = current_user.tags
+    tags.each do |tag|
+      @posts.concat(tag.post_type.posts)
+    end
+    if @posts == []
+      @posts = Post.order("post_time DESC").all.take(5)
+    end
+  else 
     @posts = Post.order("post_time DESC").all.take(5)
   end
+  
   erb :index
 end
 

@@ -12,7 +12,7 @@
           <div>
             <div class="create_time"><%= post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
             <div class="reading_time"><%= post.reading_time%> min read</div>
-            <% if post.post_type.type_name != nil %>
+            <% if post.post_type != nil %>
               <div class="post_type_show">Post Type: <%=post.post_type.type_name %></div>
             <% end %>
           </div>

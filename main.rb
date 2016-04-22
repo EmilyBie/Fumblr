@@ -189,6 +189,12 @@ end
 
 delete '/blog/delete/:id' do
   post = Post.find(params[:id])
+  if post.comments != nil
+    post.comments.each do |comment|
+    comment.destroy
+    end
+  end
+  
   post.destroy
   redirect to '/posts/myblog'
 end

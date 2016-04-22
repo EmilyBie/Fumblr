@@ -37,9 +37,11 @@
     <% @comments.each do |comment| %>
     <div>
       <div class="postcreater_photo">
-          <img src="http://playseeds.com/img/the_user_500px.png" alt="">
-          </div>
-          <p class="postcreater_name"><%= comment.user.email %></p>
+        <img src="http://playseeds.com/img/the_user_500px.png" alt="">
+      </div>
+      <% if comment.user != nil %>
+        <p class="postcreater_name"><%= comment.user.email %></p>
+      <%end%> 
     </div>
     <div class="show_comment_body"><%= comment.body%></div>
     <% end %>

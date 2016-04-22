@@ -10,6 +10,19 @@
       <div class="create_time"><%= @post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
       <div class="reading_time"><%= @post.reading_time%> min read</div>
     </div>
+    <div class="edit_and_delete_buttons">
+        <%if logged_in? %>
+          <% if @post.user_id == current_user.id %>
+            <form class="editForm" action="/blog/edit/<%= @post.id %>">
+              <button class="editBtn">Edit</button>
+            </form>
+            <form class="deleteForm" action="/blog/delete/<%= @post.id %>" method="post">
+              <input type="hidden" value="delete" name="_method">
+              <button class="deleteBtn">Delete</button>
+            </form>
+          <%end%>
+        <%end%>
+    </div>
   <h1><%=@post.title%></h1>
   <% paragraphs = @post.body.split("\r")%>
   <% paragraphs.each do |paragraph| %>
@@ -18,32 +31,30 @@
 </div>
 
 <div class="comments">
-
+  <div class="comments_container">
   <% if @comments != nil && @comments != [] %>
     <h3>Comments</h3>
     <% @comments.each do |comment| %>
-    <div><%= comment.body%></div>
+    <div>
+      <div class="postcreater_photo">
+          <img src="http://playseeds.com/img/the_user_500px.png" alt="">
+          </div>
+          <p class="postcreater_name"><%= comment.user.email %></p>
+    </div>
+    <div class="show_comment_body"><%= comment.body%></div>
     <% end %>
   <% end %>
   <% if logged_in? %> 
     <% if @post.user_id != current_user.id %>
-      <h3>Give your comments here</h3>
+      <h4>Leave your comments here</h4>
       <form class="comment_form" action="/comment/?post_id=<%=@post.id%>" method="post">
-        <textarea name="body" id="" cols="50" rows="10" placeholder="Your comment..."></textarea>
+        <textarea name="body" id="" cols="100" rows="10" placeholder="Your comment..."></textarea>
         <div>
           <button>Publish</button>
         </div>
       </form>
-      <% else %>
-        <form action="/blog/delete/<%= @post.id %>" method="post">
-          <input type="hidden" value="delete" name="_method">
-          <button class="deleteBtn">Delete</button>
-        </form>
-        <form action="/blog/edit/<%= @post.id %>">
-          <button class="editBtn">Edit</button>
-        </form>
       <% end %>
   <% end %>
 
-
+  </div>
 </div>

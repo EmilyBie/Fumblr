@@ -1,6 +1,4 @@
-//textarea 
-// tinymce.init({ selector:'textarea' });
-
+var imageUrlArray = [];
 //check if browser supports file api and filereader features
 if (window.File && window.FileReader && window.FileList && window.Blob) {
     
@@ -28,8 +26,8 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             preview = document.getElementById("blog_body_preview")
             var oImg=document.createElement("img");
             oImg.setAttribute('src', the_url);
-            oImg.setAttribute('height', '150px');
-            oImg.setAttribute('width', '150px');
+            oImg.setAttribute('height', '300px');
+            oImg.setAttribute('width', '450px');
             preview.appendChild(oImg);
         }
     
@@ -50,5 +48,31 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 } else {
 
   alert('The File APIs are not fully supported in this browser.');
+}
+
+//remove format of copy&paste content
+var _onPaste_StripFormatting_IEPaste = false;
+
+function OnPaste_StripFormatting(elem, e) {
+
+    if (e.originalEvent && e.originalEvent.clipboardData && e.originalEvent.clipboardData.getData) {
+        e.preventDefault();
+        var text = e.originalEvent.originalEvent.clipboardData.getData('text/plain');
+            window.document.execCommand('insertText', false, text);
+                    }
+    else if (e.clipboardData && e.clipboardData.getData) {
+        e.preventDefault();
+        var text = e.clipboardData.getData('text/plain');
+        window.document.execCommand('insertText', false, text);
+    }
+    else if (window.clipboardData && window.clipboardData.getData) {
+        // Stop stack overflow
+        if (!_onPaste_StripFormatting_IEPaste) {
+            _onPaste_StripFormatting_IEPaste = true;
+            e.preventDefault();
+            window.document.execCommand('ms-pasteTextOnly', false);
+        }
+        _onPaste_StripFormatting_IEPaste = false;
+    }
 
 }

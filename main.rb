@@ -1,12 +1,12 @@
 require 'sinatra'
-# require 'sinatra/reloader'
-# require 'pry'
+require 'sinatra/reloader'
 require './db_config'
 require './models/user'
 require './models/post'
 require './models/comment'
 require './models/post_type'
 require './models/tag'
+require 'pry'
 
 enable :sessions
 
@@ -30,20 +30,20 @@ after do
 end
 
 get '/' do
-  # if !logged_in?
-  #   @posts = Post.all.take(20)
-  # else 
-  #   tags = current_user.tags
-  #   @posts = PostType.
-  # end
-  
-  @posts = Post.all
+  @posts = []
+  tags = current_user.tags
+  tags.each do |tag|
+    @posts.concat(tag.post_type.posts)
+  end
+  if @posts == []
+    @posts = Post.order("post_time DESC").all.take(5)
+  end
   erb :index
 end
 
 get '/posts/myblog' do
   if !logged_in?
-    @posts = []
+    redirect to '/login'
   else
     @posts = Post.where(user_id:current_user.id).order("post_time DESC")
   end
@@ -103,13 +103,15 @@ get '/logout' do
 end
 
 get '/posts/new' do
+  if !logged_in?
+    redirect to '/login'
+  end
   @post_types = PostType.all
   @post = Post.new
   erb :blog_new
 end
 
 post '/posts/new' do
-
   if params[:id] != nil && params[:id] != ''
     post = Post.find(params[:id])
   else 
@@ -147,6 +149,7 @@ end
 post '/comment/' do
   comment = Comment.new
   comment.post_id = params[:post_id]
+  comment.user_id = current_user.id
   comment.body = params[:body]
   if comment.valid? == true
       comment.save
@@ -193,7 +196,7 @@ get '/blog/edit/:id' do
 end
 
 get '/search' do
-  @posts = Post.where("title like ?", "%" + params[:keyword] + "%")
+  @posts = Post.where("LOWER(title) like ?", "%" + params[:keyword].downcase + "%")
   erb :index
 end
 

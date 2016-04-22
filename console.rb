@@ -1,4 +1,4 @@
-# require 'pry'
+require 'pry'
 require 'sinatra'
 
 require './db_config'
@@ -7,4 +7,4 @@ require './models/post'
 require './models/comment'
 require './models/post_type'
 require './models/tag'
-# binding.pry
+binding.pry

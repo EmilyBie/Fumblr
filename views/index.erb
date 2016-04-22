@@ -1,44 +1,56 @@
 <div class="main_body">
   <div class="post_container">
-    <% @posts.each do |post| %>
-      <div class="post">
-        <div>
-          <div class="postcreater_photo">
-            <img src="http://playseeds.com/img/the_user_500px.png" alt="">
+    <% if @posts != nil %>
+      <% @posts.each do |post| %>
+        <div class="post">
+          <div>
+            <div class="postcreater_photo">
+              <img src="http://playseeds.com/img/the_user_500px.png" alt="">
+            </div>
+            <p class="postcreater_name"><%= post.user.email %></p>
           </div>
-          <p class="postcreater_name"><%= post.user.email %></p>
-        </div>
-        <div>
-          <div class="create_time"><%= post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
-          <div class="reading_time"><%= post.reading_time%> min read</div>
-        </div>
-        <div>
-          <h3><a href="/posts/show?id=<%=post.id%>"><%= post.title %></a></h3>
-          <p class="body_head"><a href="/posts/show?id=<%=post.id%>"><% if post.body != nil %>
-            <%= post.body.gsub(/^(.{200,}?).*$/m,'\1...')%>
-          <% end %></a></p>
-          <a class="readmore" href="/posts/show?id=<%=post.id%>">Read more...</a>
-        </div>
-        <img src="<%= post.image_url.url%>" alt="">
-        <div class="post_detail_foot">
-          <a href="/posts/like?post_id=<%= post.id%>">
-          <% if logged_in? %>
-            <% if post.liked_by == nil || post.liked_by.include?(current_user.id) == false %>
-              <div class="not_like"></div>
-            <% else %>
-              <div class="is_like"></div>
+          <div>
+            <div class="create_time"><%= post.post_time.localtime.strftime("%d/%m/%Y at %I:%M%p")%></div>
+            <div class="reading_time"><%= post.reading_time%> min read</div>
+            <% if post.post_type.type_name != nil %>
+              <div class="post_type_show">Post Type: <%=post.post_type.type_name %></div>
             <% end %>
-          <% else %>
-            <div class="not_like"></div>
-          <% end %>         
-          </a>
-          <% if post.liked_by != nil %>
-          <div class="total_likes"><%= post.liked_by.size %></div>
-          <% end %>
+          </div>
+          <div>
+            <h3><a href="/posts/show?id=<%=post.id%>"><%= post.title %></a></h3>
+            <% if post.image_url.url && post.image_url.url !="" %>
+              <a href="/posts/show?id=<%=post.id%>"><img class="image_preview" src="<%= post.image_url.url%>" alt=""></a>
+            <% end %>
+            <p class="body_head"><a href="/posts/show?id=<%=post.id%>"><% if post.body != nil %>
+              <% index = post.body.index("<img src=") %>
+                <%if index != nil && index!= 0 %>
+                  <% min = [index,200].min %>
+                  <%= post.body.slice(0..index-1)%>
+                <% else %>
+                  <%= post.body.slice(0..200)%>
+                <% end %> 
+              <% end %></a></p>
+            <a class="readmore" href="/posts/show?id=<%=post.id%>">Read more...</a>
+          </div>
+          <div class="post_detail_foot">
+            <a href="/posts/like?post_id=<%= post.id%>">
+            <% if logged_in? %>
+              <% if post.liked_by == nil || post.liked_by.include?(current_user.id) == false %>
+                <div class="not_like"></div>
+              <% else %>
+                <div class="is_like"></div>
+              <% end %>
+            <% else %>
+              <div class="not_like"></div>
+            <% end %>         
+            </a>
+            <% if post.liked_by != nil %>
+            <div class="total_likes"><%= post.liked_by.size %></div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    <% end %>
-    
+      <%end %>
+    <%end%>   
   </div>
 
   <div class="side_container">

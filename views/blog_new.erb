@@ -1,6 +1,6 @@
-<form class="blog" action="/posts/new?id=<%=@post.id%>" method="post">
+<form class="blog" action="/posts/new?id=<%=@post.id%>" method="post" enctype="multipart/form-data">
   <div class="blog_title">
-    <textarea name="title" id="new_post_title" cols="80" rows="1" placeholder="Title" ><%=@post.title%></textarea>
+    <textarea name="title" id="new_post_title" cols="50" rows="1" placeholder="Title" ><%=@post.title%></textarea>
     <!-- <input type="text" name="title" id="title" placeholder="Title"> -->
     <div class="choose_type_and_publish">
       <select name="post_types" id="post_type_selector">
@@ -13,10 +13,19 @@
   </div>
   <div class="add_file">
     <input type="file" name="image" id="the-photo-file-field">
-    <textarea name="body" id="newblog_body" cols="80" rows="10" placeholder="Write your blog"><%=@post.body%></textarea>
-    <div id="blog_body_preview" contentEditable="true"></div>
-    <!-- <div name="body" id="blog_body_preview" contentEditable="true" data-placeholder="Write your blog here...">
-    </div> -->
+    <div id="blog_body_preview" contentEditable="true" data-placeholder="Write your blog here..." onpaste="OnPaste_StripFormatting(this, event);"><%=@post.body%>
+    </div>
+    <textarea name="body" id="newblog_body"></textarea>
   </div> 
-
 </form>
+
+<script>
+  //pass value from post.body div to a hidden textarea
+//when publish button is clicked, put the content in div to textarea
+  var publishBtn = document.getElementById("publishBtn");
+  publishBtn.addEventListener('click',function(){
+    var blogBody = document.getElementById("blog_body_preview").innerHTML;
+
+    document.getElementById("newblog_body").innerHTML = blogBody;
+  });
+</script>

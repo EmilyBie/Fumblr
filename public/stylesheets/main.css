@@ -19,37 +19,43 @@ body {
 .logo {
   background:url("http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons-256/matte-blue-and-white-square-icons-social-media-logos/117968-matte-blue-and-white-square-icon-social-media-logos-blogger.png") center center;
   background-size: cover;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 .fumblr {
   margin:0 auto;
   color: white ;
-  font-size: bold;
+  font-size: 3em;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
 #newBlogBtn {
   text-decoration: none;
-  color: lightgrey;
+  color: purple;
   margin-right: 20px;
+  font-size: 1.5em;
 }
 #loginBtn {
   text-decoration: none;
   color: white;
   margin-right: 5px;
+  font-size: 1.5em;
 }
 #logoutBtn {
   text-decoration: none;
   color: white;
   margin-left: 10px;
+  font-size: 1.5em;
 }
 #register {
   text-decoration: none;
   color: white;
   margin-left: 5px;
+  font-size: 1.5em;
 }
 #user_email {
   color: white;
+  font-size: 1.5em;
 }
 .navigator {
   border-top: 1px solid lightgrey;
@@ -57,7 +63,7 @@ body {
 }
 .navigator ul {
   list-style: none;
-  font-size: 0.8em;
+  font-size: 1.2em;
   margin:0px;
 }
 .navigator li {
@@ -65,7 +71,7 @@ body {
   text-decoration: none;
   margin:0 5px;
   padding:10px;
-
+  border-radius: 4px;
 }
 .navigator a {
   text-decoration: none;
@@ -74,20 +80,35 @@ body {
 .navigator li:hover{
   background-color: royalblue;
 }
+.clicked_navigator {
+  background-color: #3366FF;
+  border-radius: 4px;
+}
 .main_body {
   margin:10px;
-  /*border:1px solid lightskyblue;*/
 }
 .post_container {
   display: inline-block;
-  width: 65%;
+  width: 66%;
   vertical-align: top;
+  font-size: 120%;
 }
 .side_container {
   display: inline-block;
-  width: 25%;
+  width: 20%;
   vertical-align: top;
-  margin-left: 25px;
+  margin-left: 60px;
+  font-size: 125%;
+}
+.top_posts h3 {
+  color: aliceblue;
+  text-shadow: 2px 2px 4px #000000;
+}
+.side_container ul {
+  font-size: 1.4em;
+}
+.side_container li {
+  padding-left: 10px;
 }
 .blog {
   margin: 10px auto;
@@ -121,6 +142,7 @@ body {
 .post_detail_container {
   margin:10px;
   padding:20px;
+  font-size: 150%;
 }
 .post a {
   text-decoration: none;
@@ -139,7 +161,7 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-.create_time,.reading_time {
+.create_time,.reading_time,.post_type_show{
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
@@ -162,12 +184,34 @@ body {
 }
 .comments {
   text-align: left;
-  margin:20px 50px;
+  margin:20px 0px;
+  border-top: 1px solid lightgrey;
 }
-
+.comments_container{
+  margin-left: 20px;
+}
+.comments h3 {
+  color: aliceblue;
+  text-shadow: 2px 2px 4px #000000; 
+  font-size: 2em;
+}
+.comments h4 {
+  color: aliceblue;
+  text-shadow: 1px 1px 2px #000000;
+  font-size: 1.5em;
+}
+.comments div {
+  font-size: 1.2em;
+}
 .comments button {
-  display: block;
-  margin:5px auto;
+  margin-top: 10px;
+  margin-left: 0px;
+  width: 100px;
+  height: 30px;
+  border:none;
+  border-radius: 2px;
+  background-color: royalblue;
+  color: white;
 }
 
 .not_like {
@@ -194,8 +238,12 @@ body {
   width: 20px;
   height: 20px;
 }
+.comment_form {
+  text-align: left;
+}
 .comment_form textarea {
   padding: 10px;
+  display: block;
 }
 .about_fumblr h2 {
   text-align: center;
@@ -203,36 +251,37 @@ body {
 .about_fumblr{
   margin:20px 30px;
   padding:15px;
+  font-size: 140%;
 }
 .top_posts ul {
   padding:0px;
-  list-style-type: square;
 }
 .top_posts li a {
   text-decoration: none;
   color: white;
   font-size: 0.6em;
 }
-
-div:empty:before {
-  content:attr(data-placeholder);
-  color:gray
+.top_posts li {
+  color: #E3C1E8;
+  list-style-type: disc;
 }
+
 input#the-photo-file-field{
   color: white;
   margin-left: 20px;
+  display: block;
 }
 #the-photo-file-field::-webkit-file-upload-button {
     background-color: royalblue;
     color: white;
-    height: 20px;
+    height: 25px;
     border:0px;
-    border-radius: 2px;
+    border-radius: 1px;
 }
 #publishBtn {
     background-color: royalblue;
     color: white;
-    height: 20px;
+    height: 26px;
     width: 88px;
     border:0px;
     border-radius: 2px;
@@ -242,26 +291,29 @@ input#the-photo-file-field{
   color: white;
   background-color: royalblue;
   border: 0px;
-  height: 20px;
+  height: 25px;
   margin-left: 10px;
+  border-radius: 2px;
 }
 #new_post_title {
   margin-left: 20px;
-  width: 75%;
+  width: 60%;
   background-color: aliceblue;
   border-radius: 2px;
+  font-size: 80%;
 }
 #newblog_body {
-  margin:15px;
+  display: none;
 }
 .deleteBtn,.editBtn {
     background-color: royalblue;
     color: white;
-    height: 20px;
-    width: 88px;
+    height: 30px;
+    width: 100px;
     border:0px;
     border-radius: 2px;
     margin-left: 10px;
+    font-size: 0.7em;
 }
 .navi_list {
   display: inline-block;
@@ -272,10 +324,64 @@ input#the-photo-file-field{
   display: inline-block;
   vertical-align: middle;
   width: 30%;
+  font-size: 0.9em;
+  height: 30px;
 }
 .searchBox button{
   background-color: royalblue;
   color: white;
   border:0px;
   border-radius: 2px;
+  font-size: 0.9em;
+}
+.image_preview{
+  height: 20%;
+  width: 30%;
+  border:none;
+}
+#blog_body_preview {
+  background-color: aliceblue;
+  height: 600px;
+  padding:20px;
+  margin:10px 30px 40px 20px;
+  -moz-appearance: textfield-multiline;
+  -webkit-appearance: textarea;
+  border: 1px solid gray;
+  font: medium -moz-fixed;
+  font: -webkit-small-control;
+  overflow: auto;
+  resize: both;
+}
+div:empty:before {
+  content:attr(data-placeholder);
+  color:gray
+}
+.edit_and_delete_buttons {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.editForm {
+  display: inline-block;
+  vertical-align: middle;
+}
+.deleteForm {
+  display: inline-block;
+  vertical-align: middle;
+}
+.show_comment_body {
+  margin-left: 54px;
+  color: white;
+  font-size: 1.3em;
+}
+@media (max-width: 500px) {
+  .fumblr {
+    font-size: 2em;
+  }
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+  .navigator ul{
+    font-size: 0.8em;
+  }
 }

@@ -31,6 +31,7 @@ CREATE TABLE comments (
   body VARCHAR(1000),
   post_id INTEGER
 );
+ALTER TABLE comments ADD COLUMN user_id INTEGER;
 
 CREATE TABLE post_types (
   id SERIAL4 PRIMARY KEY,
@@ -42,6 +43,9 @@ CREATE TABLE tags (
   user_id INTEGER NOT NULL,
   post_type_id INTEGER NOT NULL
 );
+
+
+
 
 
 

@@ -25,7 +25,7 @@ class MyUploader < CarrierWave::Uploader::Base
   #   process resize_to_fill: [200,200]
   # end
   
-  storage :file
+  storage :fog
 
   def extension_whitelist
     %w(jpg jpeg gif png)

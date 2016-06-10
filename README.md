@@ -6,5 +6,5 @@ Functionality:
 •	Make comments on posts, like/unlike blogs
 •	Top Stories: posts with most likes
 
-# Github Link: https://github.com/EmilyBie/Fumblr
+##### Github Link: https://github.com/EmilyBie/Fumblr
 

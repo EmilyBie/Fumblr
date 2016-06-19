@@ -29,7 +29,8 @@ ALTER TABLE posts ADD COLUMN likes INTEGER;
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
   body VARCHAR(1000),
-  post_id INTEGER
+  post_id INTEGER,
+  user_id INTEGER
 );
 ALTER TABLE comments ADD COLUMN user_id INTEGER;
 

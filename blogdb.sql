@@ -45,6 +45,14 @@ CREATE TABLE tags (
   post_type_id INTEGER NOT NULL
 );
 
+INSERT INTO post_types (type_name) values('Travel');
+INSERT INTO post_types (type_name) values('Food');
+INSERT INTO post_types (type_name) values('Movie');
+INSERT INTO post_types (type_name) values('Sports');
+INSERT INTO post_types (type_name) values('Technology');
+INSERT INTO post_types (type_name) values('Culture');
+INSERT INTO post_types (type_name) values('Medical');
+INSERT INTO post_types (type_name) values('Humour');
 
 
 

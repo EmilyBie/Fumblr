@@ -64,7 +64,7 @@ post '/register' do
   end
   user.password = params[:password]
   user.save
-  
+  session[:user_id] = user.id
   redirect to '/add_tags'
 end
 

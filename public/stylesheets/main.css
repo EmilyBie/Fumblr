@@ -29,6 +29,11 @@ body {
   text-align: center;
   text-shadow: 2px 2px 4px #000000;
 }
+.fumblr a {
+  text-decoration: none;
+  cursor:pointer;
+  color:white;
+}
 #newBlogBtn {
   text-decoration: none;
   color: purple;

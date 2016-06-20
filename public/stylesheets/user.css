@@ -7,14 +7,20 @@ h1 {
   color: white;
   font-size: 3em;
 }
+h1 a {
+  text-decoration: none;
+  color: white;
+}
 h2 {
   text-align: center;
   color: white;
   font-size: 2em;
 }
+.login-container {
+  text-align: center;
+}
 .user_form {
   text-align: center;
-
 }
 .user_form input {
   display: block;
@@ -32,6 +38,24 @@ h2 {
   border:none;
   color: white;
   font-size: 1.2em;
+}
+.login-to-register {
+  color:white;
+  width: 300px;
+  margin:0 auto;
+}
+.login-to-register p{
+  display: inline-block;
+  width: 60%;
+}
+.login-to-register a {
+  float: right;
+  text-decoration: underline;
+  color: white;
+  display: inline-block;
+  width: 30%;
+  margin: 16px 13px;
+  cursor: pointer;
 }
 
 h4 {

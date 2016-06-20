@@ -19,12 +19,12 @@ CREATE TABLE posts (
   post_type_id INTEGER
 );
 
-ALTER TABLE posts DROP COLUMN post_time;
-ALTER TABLE posts ADD COLUMN post_time timestamp without time zone;
-ALTER TABLE posts DROP COLUMN likes;
-ALTER TABLE posts ADD COLUMN liked_by INTEGER[];
-ALTER TABLE posts ADD COLUMN post_type_id INTEGER;
-ALTER TABLE posts ADD COLUMN likes INTEGER;
+-- ALTER TABLE posts DROP COLUMN post_time;
+-- ALTER TABLE posts ADD COLUMN post_time timestamp without time zone;
+-- ALTER TABLE posts DROP COLUMN likes;
+-- ALTER TABLE posts ADD COLUMN liked_by INTEGER[];
+-- ALTER TABLE posts ADD COLUMN post_type_id INTEGER;
+-- ALTER TABLE posts ADD COLUMN likes INTEGER;
 
 CREATE TABLE comments (
   id SERIAL4 PRIMARY KEY,
@@ -32,7 +32,7 @@ CREATE TABLE comments (
   post_id INTEGER,
   user_id INTEGER
 );
-ALTER TABLE comments ADD COLUMN user_id INTEGER;
+-- ALTER TABLE comments ADD COLUMN user_id INTEGER;
 
 CREATE TABLE post_types (
   id SERIAL4 PRIMARY KEY,
